@@ -1,0 +1,31 @@
+h1 Listing samples
+
+table
+  thead
+    tr
+      th Internal
+      th Unit
+      th Lubricant
+      th Taked at
+      th Received at
+      th Reported at
+      th
+      th
+      th
+
+  tbody
+    - @samples.each do |sample|
+      tr
+        td = sample.internal_id
+        td = sample.unit
+        td = sample.lubricant
+        td = sample.taked_at
+        td = sample.received_at
+        td = sample.reported_at
+        td = link_to 'Show', sample
+        td = link_to 'Edit', edit_sample_path(sample)
+        td = link_to 'Destroy', sample, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Sample', new_sample_path

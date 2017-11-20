@@ -1,0 +1,44 @@
+es:
+  students:
+    mailer:
+      confirmation_instructions:
+        greetings: ¡Bienvenido %{name} al beta-access de %{app_name}!
+        instruction: Tu cuenta para %{email} ha sido creada con éxito.
+        instruction_2: Por favor sigue el siguiente enlace para confirmar tu dirección de correo electrónico, podrás usar tu cuenta sin haber confirmado tu email durante las próximas dos semanas.
+        action: Confirmar mi Cuenta
+        regards:
+          html: <p>Esperamos poder ser de ayuda con tus dudas médicas, no dudes en contactarnos a %{info_mail} con tus consultas y sugerencias.</p><p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      reconfirmation_instructions:
+        greetings: ¡Hola %{name}!
+        instruction: Te estamos contactando para notificarte que tu correo electrónico está siendo cambiado a %{email}.
+        instruction_2: Por favor sigue el siguiente link para terminar el proceso de confirmación.
+        action: Confirmar mi Cuenta
+        regards:
+          html: <p>Esperamos poder ser de ayuda con tus dudas médicas, no dudes en contactarnos a %{info_mail} con tus consultas y sugerencias.</p><p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      reset_password_instructions:
+        greetings: Hola %{name}
+        instruction: Alguien ha solicitado un enlace para cambiar tu contraseña.
+        instruction_2: "Puedes hacerlo en el siguiente link:"
+        action: Cambiar mi Contraseña
+        instruction_3: Si no has sido tú el que solicitó este enlace, por favor ignora este email.
+        regards:
+          html: <p>Esperamos poder ser de ayuda con tus dudas médicas, no dudes en contactarnos a %{info_mail} con tus consultas y sugerencias.</p><p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      unlock_instructions:
+        greetings: Hola %{name}
+        instruction: Tu cuenta ha sido bloqueada debido a un numero excesivo de intentos fallidos.
+        instruction_2: "Sigue el siguiente link para desbloquear tu cuenta:"
+        action: Desbloquear mi Cuenta
+        regards:
+          html: <p>Esperamos poder ser de ayuda con tus dudas médicas, no dudes en contactarnos a %{info_mail} con tus consultas y sugerencias.</p><p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      email_changed:
+        greetings: ¡Hola %{name}!
+        instruction: Tu correo electrónico %{email} ha sido confirmado con éxito.
+        action: Ir a %{app_name}
+        regards:
+          html: <p>Esperamos poder ser de ayuda con tus dudas médicas, no dudes en contactarnos a %{info_mail} con tus consultas y sugerencias.</p><p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      password_change:
+        greetings: ¡Hola %{name}!
+        instruction: Te estamos contactando para informarte que tu contraseña para %{email} ha sido cambiada con éxito.
+        action: Ir a %{app_name}
+        regards:
+          html: <p>Esperamos poder ser de ayuda con tus dudas médicas, no dudes en contactarnos a %{info_mail} con tus consultas y sugerencias.</p><p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>

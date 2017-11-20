@@ -1,0 +1,137 @@
+.btn-outline-facebook {
+	@include btn-outline(color(facebook));
+}
+.btn-outline-twitter {
+	@include btn-outline(color(twitter));
+}
+.btn-outline-google-plus {
+	@include btn-outline(color(google-plus));
+}
+.btn-brand {
+	@include btn(color(accent));
+	font-weight: 900;
+}
+.btn-admin-panel {
+	@include btn-outline(color(accent));
+	font-weight: 900;
+
+	@include media-breakpoint-only(xs) {
+		margin-top: 1rem;
+	}
+}
+.btn-admin-panel-primary {
+	@include btn-outline(theme-color(primary));
+	font-weight: 900;
+
+	@include media-breakpoint-only(xs) {
+		margin-top: 1rem;
+	}
+}
+.btn-admin-panel-success {
+	@include btn-outline(theme-color(success));
+	font-weight: 900;
+
+	@include media-breakpoint-only(xs) {
+		margin-top: 1rem;
+	}
+}
+.btn-admin-panel-warning {
+	@include btn-outline(theme-color(warning));
+	font-weight: 900;
+
+	@include media-breakpoint-only(xs) {
+		margin-top: 1rem;
+	}
+}
+.btn-admin-panel-danger {
+	@include btn-outline(theme-color(danger));
+	font-weight: 900;
+
+	@include media-breakpoint-only(xs) {
+		margin-top: 1rem;
+	}
+}
+.btn-navbar {
+	color: color(white);
+	background-color: color(accent);
+	border-color: color(accent);
+
+	&:hover, &:focus, &:active {
+		background-color: theme-color(secondary);
+		border-color: theme-color(secondary);
+		color: color(white);
+	}
+}
+.btn-group-justified {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+
+	.new_message {
+		margin-bottom: .5rem;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+
+		.btn {
+			border-radius: 2.4rem;
+			margin-bottom: .5rem;
+			box-shadow: 0 0 0 1px rgba(theme-color(primary), .25);
+		}
+		.check-buttons {
+			width: 100%;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-around;
+
+			.active {
+				background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 8 8\'%3E%3Cpath fill=\'%235cb85c\' d=\'M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z\'/%3E%3C/svg%3E");
+				padding-right: 2.25rem;
+				background-repeat: no-repeat;
+				background-position: center right 0.5625rem;
+				background-size: 1.125rem 1.125rem;
+				background-color: color(white);
+				border-color: theme-color(success);
+				color: theme-color(success);
+			}
+			label {
+				margin-bottom: 0;
+				font-weight: 400;
+			}
+		}
+	}
+}
+.btn {
+	i:first-child:not(:only-child) {
+		margin-right: .5rem;
+	}
+	i:last-child:not(:only-child) {
+		margin-left: .5rem;
+	}
+}
+.btn-code-mirror {
+	@extend .btn;
+	@extend .btn-sm;
+	@extend .btn-outline-primary;
+	margin-bottom: 1rem;
+}
+.btn-warning {
+	color: color(white);
+
+	&:hover, &:focus, &:active {
+		color: color(white);
+	}
+}
+.add_fields {
+	@extend .btn;
+	@extend .btn-sm;
+	@extend .btn-primary;
+	float: right;
+}
+.remove_fields {
+	@extend .btn;
+	@extend .btn-sm;
+	@extend .btn-danger;
+	float: right;
+}

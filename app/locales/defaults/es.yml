@@ -1,0 +1,5 @@
+es:
+  defaults:
+    app_name_styled:
+      html: <span class="app-name">PamWebApp</span>
+    app_name_plain: PamWebApp

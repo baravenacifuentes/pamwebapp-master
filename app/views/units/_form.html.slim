@@ -1,0 +1,10 @@
+= simple_form_for(@unit) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.association :component
+    = f.association :lubricant
+
+  .form-actions
+    = f.button :submit

@@ -1,0 +1,21 @@
+h1 Listing variable_types
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @variable_types.each do |variable_type|
+      tr
+        td = variable_type.name
+        td = link_to 'Show', variable_type
+        td = link_to 'Edit', edit_variable_type_path(variable_type)
+        td = link_to 'Destroy', variable_type, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Variable type', new_variable_type_path

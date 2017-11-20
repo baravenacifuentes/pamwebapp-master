@@ -1,0 +1,28 @@
+es:
+  attributes:
+    id: id
+    actions: Acciones
+    sort: Ordenar
+    name: Nombre
+    description: Descripción
+  activerecord:
+    models:
+      user: Usuario
+      unit: Unidades
+    attributes:
+      user:
+        email: Email
+        surname: Apellido
+        second_surname: Segundo Apellido
+        password: Contraseña
+        password_confirmation: Confirmar Contraseña
+        current_password: Contraseña Actual
+        remember_me: Recordarme
+        reset_password_token: Token de cambio de constraseña
+        unlock_token: Token de desbloqueo
+    errors:
+      messages:
+        record_invalid: "La validación falló: %{errors}"
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes

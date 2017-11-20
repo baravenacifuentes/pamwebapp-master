@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Value:
+  = @sample_variable.value
+p
+  strong Sample:
+  = @sample_variable.sample
+p
+  strong Variable:
+  = @sample_variable.variable
+
+=> link_to 'Edit', edit_sample_variable_path(@sample_variable)
+'|
+=< link_to 'Back', sample_variables_path

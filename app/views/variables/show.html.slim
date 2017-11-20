@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Min:
+  = @variable.min
+p
+  strong Max:
+  = @variable.max
+p
+  strong Lubricant:
+  = @variable.lubricant
+p
+  strong Type:
+  = @variable.type
+
+=> link_to 'Edit', edit_variable_path(@variable)
+'|
+=< link_to 'Back', variables_path

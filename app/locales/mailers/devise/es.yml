@@ -1,0 +1,19 @@
+es:
+  devise:
+    mailer:
+      confirmation_instructions:
+        student_subject: Instrucciones de confirmación de correo electrónico
+      reconfirmation_instructions:
+        student_subject: Instrucciones de confirmación de correo electrónico
+      reset_password_instructions:
+        student_subject: Instrucciones para restablecer tu contraseña
+        professor_subject: Instrucciones para restablecer tu contraseña de administrador
+      unlock_instructions:
+        student_subject: Instrucciones de desbloqueo de cuenta
+        professor_subject: Instrucciones de desbloqueo de cuenta de administrador
+      email_changed:
+        student_subject: Tu correo electrónico ha sido cambiado con éxito
+        professor_subject: Tu correo electrónico de administrador ha sido cambiado con éxito
+      password_change:
+        student_subject: Contraseña cambiada con éxito
+        professor_subject: Contraseña de administrador cambiada con éxito

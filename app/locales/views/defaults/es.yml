@@ -1,0 +1,10 @@
+es:
+  users:
+    defaults:
+      new: Nuevo %{model}
+      show: Ver este %{model}
+      edit: Editar este %{model}
+      edit_with_name: Editar %{name}
+      remove: Eliminar esta %{model}
+      confirm_remove: ¿Estás seguro que deseas eliminar este %{model}?
+      back: Volver

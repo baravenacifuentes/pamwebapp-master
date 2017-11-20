@@ -1,0 +1,25 @@
+h1 Listing sample_variables
+
+table
+  thead
+    tr
+      th Value
+      th Sample
+      th Variable
+      th
+      th
+      th
+
+  tbody
+    - @sample_variables.each do |sample_variable|
+      tr
+        td = sample_variable.value
+        td = sample_variable.sample
+        td = sample_variable.variable
+        td = link_to 'Show', sample_variable
+        td = link_to 'Edit', edit_sample_variable_path(sample_variable)
+        td = link_to 'Destroy', sample_variable, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Sample variable', new_sample_variable_path

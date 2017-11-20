@@ -1,0 +1,27 @@
+.mail-container.danger
+	.upper-container
+		.container
+			.section.logo
+				= image_tag 'brand-logo.png'
+				= t 'defaults.app_name_styled.html'
+			hr
+
+			.section
+				h3 = t '.greetings', name: @resource.display_short_name
+
+				p = t '.instruction'
+
+				p = t '.instruction_2'
+
+				.action
+					= link_to unlock_url(@resource, unlock_token: @token), class: 'btn', target: '_blank'
+						= t '.action'
+			hr
+
+			.section-sm.link-text
+				= link_to nil, unlock_url(@resource, unlock_token: @token), target: '_blank'
+			hr
+
+			.section-sm.regards
+				= t '.regards.html', info_mail: mail_to(t('defaults.info_mail'), t('defaults.info_mail')), app_name: t('defaults.app_name_plain')
+			hr

@@ -1,0 +1,101 @@
+@import 'bootstrap/functions';
+@import 'config/colors';
+@import 'tools/mixins';
+@import 'patterns/headings';
+$background-bar-height: 12rem;
+
+html {
+	font-family: "Open+Sans", "Open Sans", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: color(black);
+}
+p {
+	color: gray(700);
+}
+.btn {
+	color: color(white);
+	letter-spacing: .1em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 400;
+	vertical-align: middle;
+	border-radius: .25rem;
+	padding: .8rem 3rem;
+}
+.mail-container {
+	padding-top: $background-bar-height / 2;
+
+	&.primary {
+		@include mail-layout(mail-color(primary), 15%);
+	}
+	&.info {
+		@include mail-layout(mail-color(info), 20%);
+	}
+	&.success {
+		@include mail-layout(mail-color(success), 15%);
+	}
+	&.warning {
+		@include mail-layout(mail-color(warning), 10%);
+	}
+	&.trouble {
+		@include mail-layout(mail-color(trouble), 20%);
+	}
+	&.danger {
+		@include mail-layout(mail-color(danger), 10%);
+	}
+}
+.upper-container {
+	max-width: 45rem;
+	margin: 0 auto;
+	padding: 0 1rem;
+
+	.container {
+		background-color: color(white);
+		border-style: solid;
+		border-width: 1px;
+		border-color: gray(300);
+		border-radius: .5rem;
+	}
+}
+.section {
+	padding: 3rem 2rem;
+}
+.section-sm {
+	padding: 1rem 2rem;
+}
+.section-xs {
+	padding: 0 2rem;
+}
+.logo {
+	text-align: center;
+
+	img {
+		vertical-align: middle;
+		max-height: 2.5rem;
+		margin-right: .5rem;
+	}
+	.app-name {
+		color: mail-color(primary);
+		font-size: 1.5rem;
+	}
+}
+.action {
+	text-align: center;
+	padding-top: 2rem;
+	height: 2.6rem;
+}
+.link-text {
+	text-align: center;
+
+	a {
+		color: gray(700);
+		font-size: .8rem;
+	}
+}
+.regards {
+	text-align: center;
+
+	.team-name {
+		font-style: italic;
+	}
+}

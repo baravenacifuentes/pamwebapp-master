@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong Internal:
+  = @sample.internal_id
+p
+  strong Unit:
+  = @sample.unit
+p
+  strong Lubricant:
+  = @sample.lubricant
+p
+  strong Taked at:
+  = @sample.taked_at
+p
+  strong Received at:
+  = @sample.received_at
+p
+  strong Reported at:
+  = @sample.reported_at
+
+=> link_to 'Edit', edit_sample_path(@sample)
+'|
+=< link_to 'Back', samples_path

@@ -1,0 +1,11 @@
+= simple_form_for(@variable) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :min
+    = f.input :max
+    = f.association :lubricant
+    = f.association :type
+
+  .form-actions
+    = f.button :submit

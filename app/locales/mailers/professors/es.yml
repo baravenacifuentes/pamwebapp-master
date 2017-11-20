@@ -1,0 +1,38 @@
+es:
+  professors:
+    mailer:
+      reset_password_instructions:
+        greetings: Hola %{name}
+        instruction: Alguien ha solicitado un enlace para cambiar tu contraseña.
+        instruction_2: "Puedes hacerlo en el siguiente link:"
+        action: Cambiar mi Contraseña
+        instruction_3: Si no has sido tú el que solicitó este enlace, por favor ignora este mensaje.
+        regards:
+          html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      unlock_instructions:
+        greetings: Hola %{name}
+        instruction: Tu cuenta ha sido bloqueada debido a un numero excesivo de intentos de conexión fallidos.
+        instruction_2: "Sigue el siguiente link para desbloquear tu cuenta:"
+        action: Desbloquear mi Cuenta
+        regards:
+          html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      invitation_instructions:
+        greetings: Hola %{name}
+        instruction: Has recibido una invitación para formar parte de %{app_name} por parte de %{invited_by}
+        instruction_2: "Esta invitación será válida hasta el día %{due_date}"
+        instruction_3: "Sigue el siguiente link para completar tu registro:"
+        action: Aceptar Invitación
+        regards:
+          html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      email_changed:
+        greetings: ¡Hola %{name}!
+        instruction: Tu correo electrónico %{email} ha sido cambiado con éxito.
+        action: Ir a %{app_name}
+        regards:
+          html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>
+      password_change:
+        greetings: ¡Hola %{name}!
+        instruction: Te estamos contactando para informarte que tu contraseña para %{email} ha sido cambiada con éxito en tu cuenta de administrador.
+        action: Ir a %{app_name}
+        regards:
+          html: <p>Atentamente</p><p class="team-name">El equipo de %{app_name}</p>

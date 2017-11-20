@@ -1,0 +1,21 @@
+h1 Listing lubricants
+
+table
+  thead
+    tr
+      th Name
+      th
+      th
+      th
+
+  tbody
+    - @lubricants.each do |lubricant|
+      tr
+        td = lubricant.name
+        td = link_to 'Show', lubricant
+        td = link_to 'Edit', edit_lubricant_path(lubricant)
+        td = link_to 'Destroy', lubricant, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Lubricant', new_lubricant_path

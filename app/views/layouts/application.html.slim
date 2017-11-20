@@ -1,0 +1,17 @@
+doctype html
+html
+	head
+		title = yield :title
+		= content_tag :meta, nil, name: 'viewport', content: 'width=device-width, initial-scale=1'
+		= content_tag :meta, nil, name: 'turbolinks-cache-control', content: 'no-cache'
+		= render 'layouts/favicon'
+		= csrf_meta_tags
+		= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+		= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+	body
+		== render 'layouts/navbar'
+		== render 'layouts/alerts'
+		.container-fluid
+			main
+				== yield

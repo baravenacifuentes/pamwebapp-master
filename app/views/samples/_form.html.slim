@@ -1,0 +1,13 @@
+= simple_form_for(@sample) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :internal_id
+    = f.association :unit
+    = f.association :lubricant
+    = f.input :taked_at
+    = f.input :received_at
+    = f.input :reported_at
+
+  .form-actions
+    = f.button :submit

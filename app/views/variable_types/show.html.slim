@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @variable_type.name
+
+=> link_to 'Edit', edit_variable_type_path(@variable_type)
+'|
+=< link_to 'Back', variable_types_path

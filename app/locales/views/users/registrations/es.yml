@@ -1,0 +1,18 @@
+es:
+  users:
+    registrations:
+      edit:
+        heading: Editar mi Cuenta
+        hints:
+          password: Deja en blanco si no deseas cambiarla
+          current_password: Necesitamos tu contraseña actual para confirmar los cambios
+        submit: Actualizar
+        cancel_my_account: Cancelar mi cuenta
+        cancel_my_account_text: ¿Insatisfecho?
+        cancel_my_account_link: Cancelar mi cuenta
+        cancel_my_account_confirm: Este proceso es irreversible, ¿Estás seguro?
+        unconfirmed_email:
+          html: "A la espera de confirmación de: <em>%{email}</em>"
+      new:
+        title: Registro
+        submit: Registrarme

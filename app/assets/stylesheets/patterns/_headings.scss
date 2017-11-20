@@ -1,0 +1,38 @@
+.text-red {
+	color: color(soft-red) !important;
+}
+.app-name {
+	vertical-align: middle;
+	letter-spacing: .2em;
+	font-weight: 300;
+
+	span {
+		vertical-align: bottom;
+		letter-spacing: .15em;
+		font-style: italic;
+		font-size: .75em;
+	}
+}
+h1 {
+	font-weight: 400;
+	i {
+		margin-right: 1rem;
+	}
+}
+h2 {
+	font-weight: 400;
+}
+h3 {
+	font-weight: 700;
+}
+h4 {
+	font-weight: 700;
+}
+h5 {
+	font-weight: 900;
+}
+hr {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, transparent, color(blue), transparent);
+}

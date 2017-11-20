@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @component.name
+p
+  strong Gear:
+  = @component.gear
+
+=> link_to 'Edit', edit_component_path(@component)
+'|
+=< link_to 'Back', components_path

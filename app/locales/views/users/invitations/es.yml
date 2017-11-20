@@ -1,0 +1,15 @@
+es:
+  users:
+    invitations:
+      edit:
+        title: Bienvenido
+        heading:
+          html: Bienvenido a %{app_name}
+        card_heading: Iniciar Sesión
+        labels:
+          password: Nueva contraseña
+        submit: Iniciar Sesión
+      new:
+        heading: Invitar un nuevo Profesor
+        card_heading: Profesor
+        submit: Enviar invitación

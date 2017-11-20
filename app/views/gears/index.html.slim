@@ -1,0 +1,23 @@
+h1 Listing gears
+
+table
+  thead
+    tr
+      th Name
+      th Type
+      th
+      th
+      th
+
+  tbody
+    - @gears.each do |gear|
+      tr
+        td = gear.name
+        td = gear.type
+        td = link_to 'Show', gear
+        td = link_to 'Edit', edit_gear_path(gear)
+        td = link_to 'Destroy', gear, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Gear', new_gear_path

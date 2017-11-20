@@ -1,0 +1,57 @@
+nav.navbar.navbar-dark.navbar-expand-md
+	= link_to root_url, class: 'navbar-brand'
+		= image_tag 'brand-logo.png'
+		= t 'defaults.app_name_styled.html'
+	- unless controller_name == 'sessions'
+		button.navbar-toggler data-toggle='collapse' data-target='#navbar-collapse'
+			= icon 'bars'
+	- if user_signed_in?
+		/ signed in
+		.collapse.navbar-collapse.justify-content-between#navbar-collapse
+			ul.navbar-nav
+				/ sections
+				li.nav-item
+					= navbar_link_to root_path, class: 'nav-link'
+						= icon 'home'
+						= t '.dashboard'
+					= navbar_link_to_index Unit, 'gears'
+				span.navbar-divider.visible-mobile
+			ul.navbar-nav
+				/ user avatar
+				li.nav-item
+					.navbar-text
+						= current_user.display_name
+				/ desktop view
+				li.nav-item.dropdown.visible-desktop
+					= link_to '#', class: 'nav-link dropdown-toggle', data: { turbolinks: :false, toggle: 'dropdown' }
+						= icon 'cog'
+					.dropdown-menu.dropdown-menu-right
+						= link_to edit_user_registration_path, class: 'dropdown-item'
+							= icon 'user-o'
+							= t '.edit_user'
+						span.navbar-divider
+						= link_to destroy_user_session_path, method: :delete, class: 'dropdown-item text-red'
+							= icon 'sign-out'
+							= t '.sign_out'
+				/ mobile view
+				li.nav-item.visible-mobile
+					= link_to edit_user_registration_path, class: 'nav-link'
+						= icon 'user-o'
+						span = t '.edit_user'
+				span.navbar-divider.visible-mobile
+				li.nav-item.visible-mobile
+					= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-red'
+						= icon 'sign-out'
+						= t '.sign_out'
+	- else
+		/ signed out
+		- unless controller_name == 'sessions'
+			.collapse.navbar-collapse.justify-content-end#navbar-collapse
+				ul.nav.navbar-nav
+					li.nav-item.visible-mobile
+						= link_to user_session_path, class: 'nav-link text-success'
+							= icon 'sign-in'
+							= t '.sign_in'
+					li.nav-item.visible-desktop
+						= link_to user_session_path, class: 'btn btn-navbar'
+							= t '.sign_in'

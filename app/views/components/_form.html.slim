@@ -1,0 +1,9 @@
+= simple_form_for(@component) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.association :gear
+
+  .form-actions
+    = f.button :submit
