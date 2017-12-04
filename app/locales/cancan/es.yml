@@ -1,0 +1,4 @@
+es:
+  unauthorized:
+    manage:
+      all: No estás autorizado a entrar a esta sección.

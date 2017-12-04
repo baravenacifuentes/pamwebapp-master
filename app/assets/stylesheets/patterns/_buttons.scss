@@ -7,19 +7,7 @@
 .btn-outline-google-plus {
 	@include btn-outline(color(google-plus));
 }
-.btn-brand {
-	@include btn(color(accent));
-	font-weight: 900;
-}
-.btn-admin-panel {
-	@include btn-outline(color(accent));
-	font-weight: 900;
-
-	@include media-breakpoint-only(xs) {
-		margin-top: 1rem;
-	}
-}
-.btn-admin-panel-primary {
+.btn-admin-index {
 	@include btn-outline(theme-color(primary));
 	font-weight: 900;
 
@@ -27,7 +15,15 @@
 		margin-top: 1rem;
 	}
 }
-.btn-admin-panel-success {
+.btn-admin-show {
+	@include btn-outline(theme-color(primary));
+	font-weight: 900;
+
+	@include media-breakpoint-only(xs) {
+		margin-top: 1rem;
+	}
+}
+.btn-admin-new {
 	@include btn-outline(theme-color(success));
 	font-weight: 900;
 
@@ -35,7 +31,7 @@
 		margin-top: 1rem;
 	}
 }
-.btn-admin-panel-warning {
+.btn-admin-edit {
 	@include btn-outline(theme-color(warning));
 	font-weight: 900;
 
@@ -43,7 +39,7 @@
 		margin-top: 1rem;
 	}
 }
-.btn-admin-panel-danger {
+.btn-admin-destroy {
 	@include btn-outline(theme-color(danger));
 	font-weight: 900;
 
@@ -53,12 +49,12 @@
 }
 .btn-navbar {
 	color: color(white);
-	background-color: color(accent);
-	border-color: color(accent);
+	background-color: theme-color(accent);
+	border-color: theme-color(accent);
 
 	&:hover, &:focus, &:active {
-		background-color: theme-color(secondary);
-		border-color: theme-color(secondary);
+		background-color: theme-color(primary);
+		border-color: theme-color(primary);
 		color: color(white);
 	}
 }
@@ -110,12 +106,6 @@
 		margin-left: .5rem;
 	}
 }
-.btn-code-mirror {
-	@extend .btn;
-	@extend .btn-sm;
-	@extend .btn-outline-primary;
-	margin-bottom: 1rem;
-}
 .btn-warning {
 	color: color(white);
 
@@ -134,4 +124,23 @@
 	@extend .btn-sm;
 	@extend .btn-danger;
 	float: right;
+}
+.col-sm-1 {
+	text-align: center;
+
+	.remove_fields {
+		float: none;
+	}
+}
+.fa-index {
+	@extend .fa-reply;
+}
+.fa-show {
+	@extend .fa-eye;
+}
+.fa-new {
+	@extend .fa-plus;
+}
+.fa-destroy {
+	@extend .fa-remove;
 }

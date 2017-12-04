@@ -1,8 +1,8 @@
 class InvitationsController < Devise::InvitationsController
-	before_action :check_administrator, only: [:new, :create]
+	load_and_authorize_resource :user, only: [:new, :create]
 
 	private
-	def check_administrator
-		redirect_to root_path, alert: 'Sólo administradores pueden realizar invitaciones' unless current_user.admin?
+	def after_invite_path_for(resource)
+		users_path
 	end
 end

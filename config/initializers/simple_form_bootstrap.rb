@@ -3,7 +3,7 @@ SimpleForm.setup do |config|
 	config.error_notification_tag = nil
 	config.error_notification_class = 'alert alert-danger alert-dismissible fade show'
 	config.error_method = :to_sentence
-	config.button_class = 'btn btn-primary float-sm-right'
+	config.button_class = 'btn btn-primary float-right'
 	config.boolean_label_class = 'form-check-label'
 	config.boolean_style = :nested
 	config.form_class = nil
@@ -31,7 +31,6 @@ SimpleForm.setup do |config|
 		b.optional :min_max
 		b.optional :readonly
 		b.use :label, class: 'col-sm-3 col-form-label'
-
 
 		b.wrapper tag: :div, class: 'col-sm-9' do |ba|
 			ba.use :input, class: 'form-control'
@@ -142,7 +141,7 @@ SimpleForm.setup do |config|
 		b.use :label
 		b.wrapper tag: :div, class: 'form-inline' do |ba|
 			ba.use :input, class: 'form-control'
-			ba.use :error, wrap_with: { tag: :div, class: 'invalid-feedback' }
+			ba.use :full_error, wrap_with: { tag: :div, class: 'invalid-feedback' }
 			ba.use :hint,  wrap_with: { tag: :small, class: 'form-text text-muted' }
 		end
 	end
@@ -168,7 +167,6 @@ SimpleForm.setup do |config|
 		b.optional :readonly
 		b.use :label, class: 'col-sm-3 col-form-label'
 
-
 		b.wrapper tag: :div, class: 'col-sm-9' do |ba|
 			ba.wrapper tag: :div, class: 'input-group' do |bb|
 				bb.use :input, class: 'form-control'
@@ -176,6 +174,26 @@ SimpleForm.setup do |config|
 			end
 			ba.use :full_error, wrap_with: { tag: :div, class: 'invalid-feedback' }
 			ba.use :hint,  wrap_with: { tag: :small, class: 'form-text text-muted' }
+		end
+	end
+
+	config.wrappers :single_line_nested_item, tag: :div, class: 'form-group row', error_class: 'has-danger' do |b|
+		b.use :html5
+		b.use :placeholder
+		b.optional :maxlength
+		b.optional :pattern
+		b.optional :min_max
+		b.optional :readonly
+		b.use :label, class: 'col-sm-3 col-form-label'
+
+		b.wrapper tag: :div, class: 'col-10 col-sm-8' do |ba|
+			ba.use :input, class: 'form-control'
+			ba.use :full_error, wrap_with: { tag: :div, class: 'invalid-feedback' }
+			ba.use :hint,  wrap_with: { tag: :small, class: 'form-text text-muted' }
+		end
+
+		b.wrapper tag: :div, class: 'col-2 col-sm-1' do |ba|
+			ba.use :remove_link
 		end
 	end
 
@@ -187,7 +205,6 @@ SimpleForm.setup do |config|
 		b.optional :min_max
 		b.optional :readonly
 		b.use :label, class: 'col-sm-3 col-form-label'
-
 
 		b.wrapper tag: :div, class: 'col-sm-9' do |ba|
 			ba.use :input, class: 'form-control chosen-select'

@@ -1,5 +1,5 @@
-.text-red {
-	color: color(soft-red) !important;
+.text-accent {
+	color: theme-color(accent);
 }
 .app-name {
 	vertical-align: middle;
@@ -15,6 +15,7 @@
 }
 h1 {
 	font-weight: 400;
+
 	i {
 		margin-right: 1rem;
 	}

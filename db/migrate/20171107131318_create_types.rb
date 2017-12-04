@@ -3,8 +3,7 @@ class CreateTypes < ActiveRecord::Migration[5.0]
 		create_table :types do |t|
 			t.string :type
 			t.string :name
-			t.integer :current_state, default: 0
-			t.datetime :deadline
+			t.integer :worst_sample_id
 
 			t.timestamps
 		end

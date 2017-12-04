@@ -12,23 +12,20 @@ class User < ApplicationRecord
 
 
 	def ability
-		@ability ||= Ability.new(self)
+		@ability = Ability.new(self)
 	end
 
 	def set_default_role
 		self.add_role(:plant)
 	end
 
-	def display_name
-		(name.present? and surname.present?) ? "#{name} #{surname}" : email
+	def to_s
+		full_name = [name, surname, second_surname]
+		full_name.any? ? full_name.join(' ').strip : email
 	end
 
-	def display_short_name
+	def short_name
 		name.present? ? name : email
-	end
-
-	def display_full_name
-		(name.present? and surname.present?) ? "#{name} #{surname}" : email
 	end
 
 	def send_reconfirmation_instructions

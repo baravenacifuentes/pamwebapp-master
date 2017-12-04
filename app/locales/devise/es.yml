@@ -43,17 +43,18 @@ es:
       send_paranoid_instructions: Si la cuenta existe, recibirás un correo electrónico con instrucciones sobre cómo desbloquearla en pocos minutos.
       unlocked: Tu cuenta ha sido desbloqueada con éxito. Por favor inicia sesión para continuar.
     invitations:
-      send_instructions: "Una invitación de correo se ha enviado para %{email}."
-      invitation_token_invalid: "El token de invitación no es valido!"
-      updated: "Tu contraseña se ha captura con éxito, ya te encuentras dentro del sistema."
+      send_instructions: "Una invitación ha sido enviada a %{email}."
+      invitation_token_invalid: "El token de invitación no es válido"
+      updated: "Tu contraseña se ha guardado con éxito, ya te encuentras registrado en el sistema."
       no_invitations_remaining: "No quedan más invitaciones"
+      unathorized_inviter: "Usted no está autorizado a enviar invitaciones"
   errors:
     messages:
       already_confirmed: Ya se confirmó, intenta acceder.
       confirmation_period_expired: debe ser confirmada dentro de %{period}, por favor solicita uno nuevo correo de confirmación.
       expired: ha caducado, por favor solicita uno nuevo
       not_found: no encontrado
-      not_locked: no estaba cerrada
+      not_locked: no estaba bloqueado
     not_saved:
       one: "1 error prohibió que este %{resouce} sea guardado:"
       other: "%{count} errores prohibieron que estos %{resouce} se guarden:"

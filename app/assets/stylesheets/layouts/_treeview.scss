@@ -1,6 +1,7 @@
 .list-group {
-	display:block;
+	display: block;
 	color: theme-color(primary);
+
 	&:first-child {
 		border-bottom: 1px solid theme-color(secondary);
 	}
@@ -17,8 +18,17 @@
 		display: block;
 		border-color: theme-color(secondary);
 		border-radius: 0;
+
 		&:last-child {
 			border-bottom: none;
+		}
+		&.collapsed {
+			.fa-square {
+				@extend .fa-plus-square;
+			}
+		}
+		.fa-square {
+			@extend .fa-minus-square;
 		}
 	}
 	span.indent {

@@ -2,8 +2,6 @@ es:
   users:
     shared:
       links:
-        sign_in_facebook: Iniciar con Facebook
-        sign_in_google: Iniciar con Google+
         sign_in: Iniciar Sesión
         sign_up: Registrarse
         forgot_password: ¿Olvidaste tu contraseña?

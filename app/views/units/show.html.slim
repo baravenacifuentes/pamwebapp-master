@@ -1,15 +1,22 @@
-p#notice = notice
-
-p
-  strong Name:
-  = @unit.name
-p
-  strong Component:
-  = @unit.component
-p
-  strong Lubricant:
-  = @unit.lubricant
-
-=> link_to 'Edit', edit_unit_path(@unit)
-'|
-=< link_to 'Back', units_path
+= header_generator @unit, 'gear'
+.description-box-inverse
+	dl.row-wg
+		dt.col-sm-3 = Unit.human_attribute_name(:id)
+		dd.col-sm-9 = @unit.id
+		dt.col-sm-3 = Unit.human_attribute_name(:name)
+		dd.col-sm-9 = @unit.name
+		dt.col-sm-3 = Unit.human_attribute_name(:component)
+		dd.col-sm-9 = @unit.component
+		dt.col-sm-3 = Unit.human_attribute_name(:lubricant)
+		dd.col-sm-9 = @unit.lubricant
+		dt.col-sm-3 = Unit.human_attribute_name(:samples_count)
+		dd.col-sm-9 = @unit.samples.count
+		dt.col-sm-3 = Unit.human_attribute_name(:state)
+		dd.col-sm-9 = @unit.samples.any? ? @unit.samples.last.state_to_s : 'No se han tomado muestras aún'
+		dt.col-sm-3 = Unit.human_attribute_name(:next_sample_date)
+		dd.col-sm-9 = @unit.samples.any? ? @unit.samples.last.next_sample_date.html_safe : 'No se han tomado muestras aún'
+hr
+.row-wg
+	h4
+		= Sample.model_name.human.pluralize(I18n.locale)
+	= admin_table_generator @unit.samples.order(id: :desc), :id, :internal_id, :taked_at, :received_at, :reported_at, :sample_variables_to_s

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :variables
 	# Devise users
 	devise_for :users, path: '', skip: :registrations, controllers: { invitations: 'invitations' }
 	devise_scope :user do
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
 		patch '', to: 'devise/registrations#update', as: 'user_registration'
 		put '', to: 'devise/registrations#update'
 	end
+	resources :users, only: [:index, :show, :destroy]
 
 	resources :gear_types
 	resources :gears
