@@ -21,9 +21,9 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
+  adapter: mysql2
   host: localhost
-  database: pamwebapp
+  database: pamwebapp2
   username: pamwebapp
   password: 210646
 

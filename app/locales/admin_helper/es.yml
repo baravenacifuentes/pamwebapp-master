@@ -1,0 +1,9 @@
+es:
+  admin_helper:
+    new: Crear %{model}
+    show: Ver %{model}
+    edit: Editar %{model}
+    edit_with_name: Editar %{name}
+    remove: Eliminar %{model}
+    confirm_remove: ¿Estás seguro que deseas eliminar %{model}?
+    back: Volver

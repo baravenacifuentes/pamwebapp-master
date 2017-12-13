@@ -1,0 +1,10 @@
+es:
+  samples:
+    states:
+      unspecified: Sin calcular
+      optimal: El lubricante se encuentra en rangos óptimos
+      filter: El lubricante debe ser sometido a filtración
+      additive: Se debe agregar aditivo indicado por fabricante
+      change: El lubricante debe ser remplazado
+    next_sample_date: Se debe tomar la siguiente muestra antes del <em>%{deadline}</em> y quedan <em>%{time_left}</em> días para ello
+    next_sample_date_expired: Se debía tomar la siguiente muestra antes del <em>%{deadline}</em> y han pasado <em>%{time_left}</em> días desde aquello

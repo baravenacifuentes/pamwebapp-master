@@ -9,6 +9,7 @@ es:
     models:
       user: Usuario
       unit: Unidades
+      sample: Muestra
     attributes:
       user:
         email: Email
@@ -20,6 +21,18 @@ es:
         remember_me: Recordarme
         reset_password_token: Token de cambio de constraseña
         unlock_token: Token de desbloqueo
+      unit:
+        component: Componente
+        lubricant: Lubricante
+        samples_count: Cantidad de Muestras tomadas
+        state: Estado
+        next_sample_date: Fecha de Próxima Muestra
+      sample:
+        internal_id: id Interna
+        taked_at: Tomada el
+        received_at: Recivida el
+        reported_at: Reportada el
+        sample_variables_to_s: Variables de la Muestra
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

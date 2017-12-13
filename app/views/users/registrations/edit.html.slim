@@ -1,25 +1,19 @@
-- title
+= header_generator nil, 'edit', t('.heading')
 .devise-form-container
 	.devise-form.edit-form
 		.card.border-primary
 			.card-header.bg-primary
-				h2.text-white = t '.title'
+				h2.text-white = t '.sub_heading'
 			.card-body
-				.row
-					.col-lg-8
-						= simple_form_for resource, as: resource_name, url: registration_path(resource_name), method: :put do |f|
-							= f.input :email, required: true, autofocus: true
-							= f.input :name
-							= f.input :surname
-							= f.input :second_surname
-							= f.input :avatar_url
-							.row.justify-content-end
-								.col-sm-9
-									hr
-							= f.input :password, autocomplete: 'off'
-							= f.input :password_confirmation
-							= f.input :current_password, required: true
-							= f.button :submit, t('.submit')
-					.col-lg-4
-						.avatar
-							= avatar_tag resource.avatar, class: 'rounded'
+				= simple_form_for resource, as: resource_name, url: registration_path(resource_name), method: :put do |f|
+					= f.input :email, required: true, autofocus: true
+					= f.input :name
+					= f.input :surname
+					= f.input :second_surname
+					.row.justify-content-end
+						.col-sm-9
+							hr
+					= f.input :password, autocomplete: 'off', hint: t('.hints.password')
+					= f.input :password_confirmation
+					= f.input :current_password, required: true, hint: t('.hints.current_password')
+					= f.button :submit, t('.submit')

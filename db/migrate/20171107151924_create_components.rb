@@ -3,8 +3,7 @@ class CreateComponents < ActiveRecord::Migration[5.0]
 		create_table :components do |t|
 			t.string :name
 			t.references :gear, foreign_key: true
-			t.integer :current_state, default: 0
-			t.datetime :deadline
+			t.integer :worst_sample_id
 
 			t.timestamps
 		end

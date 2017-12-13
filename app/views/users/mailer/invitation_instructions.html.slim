@@ -7,7 +7,7 @@
 			hr
 
 			.section
-				h3 = t '.greetings', name: @resource.display_short_name
+				h3 = t '.greetings', name: @resource.short_name
 
 				p = t '.instruction', app_name: t('defaults.app_name_plain'), invited_by: @resource.invited_by.display_full_name
 

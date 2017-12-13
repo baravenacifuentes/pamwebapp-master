@@ -15,26 +15,24 @@ ActiveRecord::Schema.define(version: 20171107153117) do
   create_table "components", force: :cascade do |t|
     t.string   "name"
     t.integer  "gear_id"
-    t.integer  "current_state", default: 0
-    t.datetime "deadline"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "worst_sample_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["gear_id"], name: "index_components_on_gear_id"
   end
 
   create_table "gears", force: :cascade do |t|
     t.integer  "type_id"
     t.string   "name"
-    t.integer  "current_state", default: 0
-    t.datetime "deadline"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "worst_sample_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["type_id"], name: "index_gears_on_type_id"
   end
 
   create_table "lubricants", force: :cascade do |t|
     t.string   "name"
-    t.integer  "max_days"
+    t.integer  "max_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,8 +51,9 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.float    "value"
     t.integer  "sample_id"
     t.integer  "variable_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "state",       default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["sample_id"], name: "index_sample_variables_on_sample_id"
     t.index ["variable_id"], name: "index_sample_variables_on_variable_id"
   end
@@ -62,33 +61,31 @@ ActiveRecord::Schema.define(version: 20171107153117) do
   create_table "samples", force: :cascade do |t|
     t.string   "internal_id"
     t.integer  "unit_id"
-    t.integer  "lubricant_id"
     t.datetime "taked_at"
     t.datetime "received_at"
     t.datetime "reported_at"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["lubricant_id"], name: "index_samples_on_lubricant_id"
+    t.integer  "state",       default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["unit_id"], name: "index_samples_on_unit_id"
   end
 
   create_table "types", force: :cascade do |t|
     t.string   "type"
     t.string   "name"
-    t.integer  "current_state", default: 0
+    t.integer  "worst_sample_id"
     t.datetime "deadline"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "units", force: :cascade do |t|
     t.integer  "component_id"
     t.integer  "lubricant_id"
     t.string   "name"
-    t.integer  "current_state", default: 0
-    t.datetime "deadline"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "worst_sample_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["component_id"], name: "index_units_on_component_id"
     t.index ["lubricant_id"], name: "index_units_on_lubricant_id"
   end
