@@ -58,7 +58,7 @@ class Sample < ApplicationRecord
 		if (deadline.to_date - Date.today).to_i >= 0
 			I18n.t :next_sample_date, scope: :samples, deadline: I18n.l(deadline.to_date, format: :long), time_left: (deadline.to_date - Date.today).to_i
 		else
-			I18n.t :next_sample_date_expired, scope: :samples, deadline: I18n.l(deadline.to_date, format: :long), time_left: (deadline.to_date - Date.today).to_i
+			I18n.t :next_sample_date_expired, scope: :samples, deadline: I18n.l(deadline.to_date, format: :long), time_left: (Date.today - deadline.to_date ).to_i
 		end
 	end
 

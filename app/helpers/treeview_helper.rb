@@ -16,6 +16,7 @@ module TreeviewHelper
 						end
 						concat icon('square', class: 'fa-fw')
 						concat child.name
+						concat child.worst_deadline_to_icon
 					}
 					concat treeview(child.children, child_list_class_name, level + 1, "#{child.class.name.tableize.dasherize}-#{child.id}")
 				else

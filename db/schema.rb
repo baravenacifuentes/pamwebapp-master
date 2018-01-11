@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.string   "name"
     t.integer  "gear_id"
     t.integer  "worst_sample_id"
+    t.datetime "worst_deadline"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["gear_id"], name: "index_components_on_gear_id"
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.integer  "type_id"
     t.string   "name"
     t.integer  "worst_sample_id"
+    t.datetime "worst_deadline"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["type_id"], name: "index_gears_on_type_id"
@@ -74,7 +76,7 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.string   "type"
     t.string   "name"
     t.integer  "worst_sample_id"
-    t.datetime "deadline"
+    t.datetime "worst_deadline"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

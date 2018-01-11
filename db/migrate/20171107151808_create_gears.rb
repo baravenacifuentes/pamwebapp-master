@@ -4,6 +4,7 @@ class CreateGears < ActiveRecord::Migration[5.0]
 			t.references :type, foreign_key: true
 			t.string :name
 			t.integer :worst_sample_id
+			t.datetime :worst_deadline
 
 			t.timestamps
 		end

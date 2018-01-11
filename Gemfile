@@ -50,7 +50,7 @@ gem 'slim-rails'
 
 # Assets
 gem 'simple_form'
-gem 'bootstrap', '~> 4.0.0.beta'
+gem 'bootstrap', '4.0.0.beta2.1'
 gem 'font-awesome-sass'
 
 gem 'kaminari'
@@ -81,7 +81,7 @@ group :development do
 end
 
 group :production do
-	gem 'mysql2'
+	gem 'pg', '~> 0.18'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
