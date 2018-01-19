@@ -1,9 +1,11 @@
-= simple_form_for(@gear) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :name
-    = f.association :type
-
-  .form-actions
-    = f.button :submit
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @gear.singularize
+			.card-body
+				= simple_form_for @gear do |f|
+					- f.error_notification
+					= f.input :name
+					= f.association :type
+					= f.button :submit

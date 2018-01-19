@@ -13,6 +13,10 @@ nav.navbar.navbar-dark.navbar-expand-lg
 					= navbar_link_to root_path, class: 'nav-link'
 						= icon 'home'
 						= t '.dashboard'
+					= navbar_link_to_index GearType, 'gears'
+					= navbar_link_to_index Gear, 'gear'
+					= navbar_link_to_index Component, 'gears'
+					= navbar_link_to_index Unit, 'gears'
 					= navbar_link_to_index User, 'users'
 				span.navbar-divider.visible-mobile
 			ul.navbar-nav

@@ -22,6 +22,8 @@ class Component < ApplicationRecord
 			'<i class="fa fa-fw fa-clock-o text-danger"></i>'.html_safe
 		elsif worst_deadline - 10.days < Time.now
 			'<i class="fa fa-fw fa-clock-o text-warning"></i>'.html_safe
+		else
+			'<i class="fa fa-fw fa-clock-o text-success"></i>'.html_safe
 		end
 	end
 

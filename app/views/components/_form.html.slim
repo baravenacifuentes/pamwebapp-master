@@ -1,9 +1,10 @@
-= simple_form_for(@component) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :name
-    = f.association :gear
-
-  .form-actions
-    = f.button :submit
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @component.singularize
+			.card-body
+				= simple_form_for @component do |f|
+					- f.error_notification
+					= f.input :name
+					= f.button :submit

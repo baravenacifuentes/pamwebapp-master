@@ -1,25 +1,25 @@
 module AdminHelper
-	def header_generator(object, icon_name, heading=nil)
-		if object.present? and user_signed_in?
+	def header_generator(object, icon_name, heading=nil, buttons=nil)
+		if object.present?
 			case action_name.to_sym
 			when :new, :create
-				heading ||= t('admin_helper.new', model: object.model_name.human)
-				buttons = buttons_generator(object, :index)
+				heading ||= t('admin_helper.new', model: object.singularize)
+				buttons ||= buttons_generator(object, :index)
 			when :show
-				heading ||= object.respond_to?(:to_s) ? object.to_s : object.model_name.human
-				buttons = buttons_generator(object, :index, :edit, :destroy)
+				heading ||= object.respond_to?(:to_s) ? object.to_s : object.singularize
+				buttons ||= buttons_generator(object, :index, :edit, :destroy)
 			when :edit, :update
-				heading ||= object.respond_to?(:to_s) ? t('admin_helper.edit_with_name', name: object.to_s) : t('admin_helper.edit', model: object.model_name.human)
-				buttons = buttons_generator(object, :index, :show, :destroy)
+				heading ||= object.respond_to?(:to_s) ? t('admin_helper.edit_with_name', name: object.to_s) : t('admin_helper.edit', model: object.singularize)
+				buttons ||= buttons_generator(object, :index, :show, :destroy)
 			when :index
-				heading ||= object.model_name.human.pluralize(I18n.locale)
-				buttons = buttons_generator(object, :new)
+				heading ||= object.pluralize
+				buttons ||= buttons_generator(object, :new)
 			end
 		end
 
 		title heading
 
-		header_content = content_tag :h1 do
+		heading_content = content_tag :h1 do
 			concat icon icon_name
 			concat heading
 		end
@@ -27,34 +27,33 @@ module AdminHelper
 		content_tag :div, class: 'admin-header' do
 			content_tag :div, class: 'row-wg' do
 				if buttons.present?
-					concat content_tag(:div, class: 'col-9') {
-						header_content
-					}
+					concat content_tag :div, heading_content, class: 'col-9'
 					concat content_tag(:div, class: 'col-3') {
 						content_tag :div, class: 'btn-group pull-right' do
-							buttons.html_safe
+							buttons
 						end
 					}
 				else
-					header_content
+					heading_content
 				end
 			end
 		end
 	end
 
-	def admin_table_generator(objects, *attributes)
+	def table_generator(objects, *args)
+		args = objects.attrs | args
 		content_tag :div, class: 'col-sm-12' do
 			concat content_tag(:table, class: 'admin-table') {
 				concat content_tag(:thead) {
 					content_tag :tr do
-						attributes.each do |attribute|
+						args.each do |attribute|
 							case attribute
-							when Array
-								concat content_tag :th, objects.model.human_attribute_name(attribute.first), class: attribute.second
-							when :id, :actions, /.*\?/
-								concat content_tag :th, objects.model.human_attribute_name(attribute), class: 'table-center'
+							when Hash
+								concat content_tag :th, objects.attribute_name(attribute[:name]), class: attribute[:class]
+							when :id, :actions, /.*\?/, /.*\_at/
+								concat content_tag :th, objects.attribute_name(attribute), class: 'table-center'
 							else
-								concat content_tag :th, objects.model.human_attribute_name(attribute)
+								concat content_tag :th, objects.attribute_name(attribute)
 							end
 						end
 					end
@@ -62,10 +61,12 @@ module AdminHelper
 				concat content_tag(:tbody) {
 					objects.each do |object|
 						concat content_tag(:tr) {
-							attributes.each do |attribute|
+							args.each do |attribute|
 								case attribute
-								when Array
-									concat content_tag :td, object.send(attribute.first), class: attribute.second
+								when Hash
+									concat content_tag(:td, nil, class: attribute[:class]){
+										attribute[:content].present? ? attribute[:content] : object.send(attribute[:method])
+									}
 								when :id
 									concat content_tag :td, object.send(attribute), class: 'table-center'
 								when :actions
@@ -74,8 +75,13 @@ module AdminHelper
 									concat content_tag(:td, class: 'table-center'){
 										object.send(attribute) ? icon('check-square-o', class: 'text-success') : icon('square-o')
 									}
-								when /.*_at/
-									concat content_tag :td, I18n.l(object.send(attribute).to_date, format: :long)
+								when /.*\_at/
+									concat content_tag(:td, class: 'table-center'){
+										distance_of_time_in_words Time.zone.now, object.send(attribute),
+										true,
+										highest_measures: 2,
+										accumulate_on: :days if object.send(attribute).present?
+									}
 								when :color
 									concat content_tag(:td, object.send(attribute), class: 'table-center'){
 										content_tag :div, style: "background-color:#{object.send(attribute)};width=100%;" do
@@ -90,69 +96,57 @@ module AdminHelper
 					end
 				}
 			}
-			# concat paginate_with_info(objects)
+			concat paginate_with_info(objects) if objects.respond_to?(:total_pages)
+		end
+	end
+
+	def dbox_generator(object, *args)
+		args |= object.attrs
+		content_tag :div, class: 'description-box-inverse' do
+			content_tag :dl, class: 'row-wg' do
+				args.each do |attribute|
+					case attribute
+					when /.*\?/
+						concat content_tag :dt, object.attribute_name(attribute), class: 'col-sm-3'
+						concat content_tag(:dd, class: 'col-sm-9'){
+							object.send(attribute) ? icon('check-square-o', class: 'text-success') : icon('square-o')
+						}
+					else
+						concat content_tag :dt, object.attribute_name(attribute), class: 'col-sm-3'
+						concat content_tag :dd, object.send(attribute), class: 'col-sm-9'
+					end
+				end
+			end
+		end
+	end
+
+	def title(title=nil, *args)
+		content_for :title do
+			if t('.title', default: '').present?
+				"#{ t '.title', *args } | #{ t 'globals.app_name_plain' }"
+			elsif title.present?
+				"#{ title } | #{ t 'globals.app_name_plain' }"
+			else
+				t 'globals.app_name_plain'
+			end
 		end
 	end
 
 	def buttons_generator(object, *args)
-		buttons = ''
-		args.each do |arg|
-			buttons += send("#{arg.to_s}_link_to", object, "btn btn-admin-#{arg.to_s}").to_s
-		end
-		buttons
+		args.map{ |arg| send "#{arg.to_s}_link_to", object, "btn btn-admin-#{arg.to_s}" }.join.html_safe
 	end
 
 	def actions_generator(object)
-		content = show_link_to(object).to_s
-		content += edit_link_to(object, 'text-warning').to_s
-		content += destroy_link_to(object, 'text-danger').to_s
-		content.html_safe
-	end
-
-	def new_link_to(object, class_name=nil)
-		path = case object.new
-		when User
-			new_user_invitation_path
-		else
-			[:new, object.model_name.singular]
-		end
-		if current_user.can? :create, object
-			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.new', model: object.model_name.human)} do
-				icon 'new'
-			end
-		end
-	end
-
-	def show_link_to(object, class_name=nil)
-		path = object
-		if current_user.can? :show, object
-			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.show', model: object.model_name.human)} do
-				icon 'show'
-			end
-		end
-	end
-
-	def edit_link_to(object, class_name=nil)
-		path = case object
-		when User
-			edit_user_registration_path
-		else
-			[:edit, object]
-		end
-		if current_user.can? :update, object
-			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.edit', model: object.model_name.human)} do
-				icon 'edit'
-			end
+		content_tag :div do
+			concat show_link_to(object)
+			concat edit_link_to(object, 'text-warning')
+			concat destroy_link_to(object, 'text-danger')
+			concat accept_link_to(object, 'text-success')
 		end
 	end
 
 	def index_link_to(object, class_name=nil)
-		path = case object
-		when Unit
-			root_path
-		else
-			object.class
-		end
+		path = object.class
 		if current_user.can? :index, object.class
 			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.back')} do
 				icon 'index'
@@ -160,11 +154,49 @@ module AdminHelper
 		end
 	end
 
+	def show_link_to(object, class_name=nil)
+		path = object
+		if current_user.can? :show, object
+			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.show', model: object.singularize)} do
+				icon 'show'
+			end
+		end
+	end
+
+	def new_link_to(object, class_name=nil)
+		path = [:new, object.model_name.singular_route_key]
+		if current_user.can? :new, object
+			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.new', model: object.singularize)} do
+				icon 'new'
+			end
+		end
+	end
+
+	def edit_link_to(object, class_name=nil)
+		path = [:edit, object]
+		if current_user.can? :edit, object
+			link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.edit', model: object.singularize)} do
+				icon 'edit'
+			end
+		end
+	end
+
 	def destroy_link_to(object, class_name=nil)
 		path = object
 		if current_user.can? :destroy, object
-			link_to path, method: :delete, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.remove', model: object.model_name.human), confirm: t('admin_helper.confirm_remove', model: object.model_name.human)} do
+			link_to path, method: :delete, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.remove', model: object.singularize), confirm: t('admin_helper.confirm_remove', model: object.singularize)} do
 				icon 'destroy'
+			end
+		end
+	end
+
+	def accept_link_to(object, class_name=nil)
+		if action_name.to_sym == :show and controller_name.to_sym == :courses
+			path = accept_student_courses_path(course_id: params[:id], id: object.id)
+			if current_user.can? :accept, object
+				link_to path, class: class_name, data: { toggle: 'tooltip', placement: 'bottom', title: t('admin_helper.accept', model: object.singularize)}, method: :post do
+					icon 'accept'
+				end
 			end
 		end
 	end
@@ -190,12 +222,12 @@ module AdminHelper
 				if current_page?(object)
 					content_tag :span, class: 'nav-link active' + class_name do
 						concat icon icon_name
-						concat object.model_name.human.pluralize(I18n.locale)
+						concat object.pluralize
 					end
 				else
 					link_to object, class: 'nav-link' + class_name do
 						concat icon icon_name
-						concat object.model_name.human.pluralize(I18n.locale)
+						concat object.pluralize
 					end
 				end
 			end
@@ -207,17 +239,16 @@ module AdminHelper
 			if current_page?(object)
 				content_tag :span, class: 'dropdown-item active' do
 					concat icon icon_name
-					concat object.model_name.human.pluralize(I18n.locale)
+					concat object.pluralize
 				end
 			else
 				link_to object, class: 'dropdown-item' do
 					concat icon icon_name
-					concat object.model_name.human.pluralize(I18n.locale)
+					concat object.pluralize
 				end
 			end
 		end
 	end
-
 
 	def paginate_with_info(resources)
 		content = paginate resources

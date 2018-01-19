@@ -99,6 +99,9 @@ GEM
       devise (>= 4.0.0)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
+    dotiw (4.0.0)
+      actionpack (>= 4)
+      i18n
     equalizer (0.0.11)
     erubi (1.7.0)
     erubis (2.7.0)
@@ -311,6 +314,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise_invitable
+  dotiw
   font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails

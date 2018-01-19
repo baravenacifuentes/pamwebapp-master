@@ -8,7 +8,10 @@ es:
   activerecord:
     models:
       user: Usuario
-      unit: Unidades
+      gear_type: Tipo
+      gear: Equipo
+      component: Component
+      unit: Unidad
       sample: Muestra
     attributes:
       user:
@@ -30,7 +33,7 @@ es:
       sample:
         internal_id: id Interna
         taked_at: Tomada el
-        received_at: Recivida el
+        received_at: Recibida el
         reported_at: Reportada el
         sample_variables_to_s: Variables de la Muestra
     errors:

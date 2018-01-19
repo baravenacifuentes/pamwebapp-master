@@ -1,21 +1,3 @@
-h1 Listing gear_types
-
-table
-  thead
-    tr
-      th Name
-      th
-      th
-      th
-
-  tbody
-    - @gear_types.each do |gear_type|
-      tr
-        td = gear_type.name
-        td = link_to 'Show', gear_type
-        td = link_to 'Edit', edit_gear_type_path(gear_type)
-        td = link_to 'Destroy', gear_type, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Gear type', new_gear_type_path
+= header_generator GearType, 'gears'
+.row-wg
+	= table_generator @gear_types, :actions

@@ -16,7 +16,7 @@
 		dt.col-sm-3 = Unit.human_attribute_name(:next_sample_date)
 		dd.col-sm-9 = @unit.samples.any? ? @unit.samples.last.next_sample_date.html_safe : 'No se han tomado muestras aún'
 hr
-/ .row-wg
+.row-wg
 	h4
-		= Sample.model_name.human.pluralize(I18n.locale)
-	= admin_table_generator @unit.samples.order(id: :desc), :id, :internal_id, :taked_at, :received_at, :reported_at, :sample_variables_to_s
+		= "Historial de #{Sample.model_name.human.pluralize(I18n.locale)}"
+	= table_generator @unit.samples.order(id: :desc), :id, :internal_id, :taked_at, :received_at, :reported_at, :sample_variables_to_s

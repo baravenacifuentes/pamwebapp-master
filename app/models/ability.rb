@@ -3,8 +3,10 @@ class Ability
 
 	def initialize(user)
 		can :update, User, id: user.id
-		can :read, Unit
-
+		can :manage, Unit
+		can :manage, GearType
+		can :manage, Gear
+		can :manage, Component
 		if user.is_admin?
 			# can :read, User
 			# can :create, User

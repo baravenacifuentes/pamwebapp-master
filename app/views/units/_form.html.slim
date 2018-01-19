@@ -1,10 +1,14 @@
-= simple_form_for(@unit) do |f|
-  = f.error_notification
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @unit.singularize
+			.card-body
+				= simple_form_for @unit do |f|
+					- f.error_notification
+					= f.input :name
+					= f.association :component
+					= f.association :lubricant
+					= f.button :submit
 
-  .form-inputs
-    = f.input :name
-    = f.association :component
-    = f.association :lubricant
 
-  .form-actions
-    = f.button :submit

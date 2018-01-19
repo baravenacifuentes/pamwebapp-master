@@ -1,23 +1,3 @@
-h1 Listing components
-
-table
-  thead
-    tr
-      th Name
-      th Gear
-      th
-      th
-      th
-
-  tbody
-    - @components.each do |component|
-      tr
-        td = component.name
-        td = component.gear
-        td = link_to 'Show', component
-        td = link_to 'Edit', edit_component_path(component)
-        td = link_to 'Destroy', component, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Component', new_component_path
+= header_generator Component, 'gear'
+.row-wg
+	= table_generator @components, :actions
