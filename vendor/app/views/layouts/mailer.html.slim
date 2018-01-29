@@ -1,0 +1,8 @@
+doctype html
+html
+	head
+		= content_tag :meta, nil, http: {equiv: 'Content-Type'}, content: 'text/html; charset=utf-8'
+		= stylesheet_link_tag 'mailer'
+
+	body
+		== yield

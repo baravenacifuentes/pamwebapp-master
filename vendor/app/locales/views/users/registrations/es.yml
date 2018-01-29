@@ -1,0 +1,10 @@
+es:
+  users:
+    registrations:
+      edit:
+        heading: Editar mi Cuenta
+        sub_heading: Información de Perfil
+        hints:
+          password: Deja en blanco si no deseas cambiarla
+          current_password: Necesitamos tu contraseña actual para confirmar los cambios
+        submit: Actualizar

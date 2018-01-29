@@ -1,0 +1,5 @@
+es:
+  layouts:
+    mailer_footer:
+      footer:
+        html: "<span class='app-name'>%{link_home}</span> %{year}<span class='divider'>•</span>%{link_privacy}"

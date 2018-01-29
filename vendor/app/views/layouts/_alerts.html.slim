@@ -1,0 +1,11 @@
+- if flash[:error]
+	= display_alert class: 'alert-danger'
+		= content_tag :p, flash[:error]
+		= content_tag :p, flash[:alert] if flash[:alert]
+		= content_tag :p, flash[:notice] if flash[:notice]
+- elsif flash[:alert]
+	= display_alert class: 'alert-warning'
+		= content_tag :p, flash[:alert]
+		= content_tag :p, flash[:notice] if flash[:notice]
+- elsif flash[:notice]
+	= display_alert flash[:notice]

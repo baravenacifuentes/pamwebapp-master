@@ -1,0 +1,104 @@
+//
+// Color system
+//
+
+$white:        #FAFBFC;
+$gray-100:     #F4F5F6;
+$gray-200:     #E9EDEF;
+$gray-300:     #DEE3E6;
+$gray-400:     #CED5DA;
+$gray-500:     #ADB6BD;
+$gray-600:     #868F96;
+$gray-700:     #495157;
+$gray-800:     #343B40;
+$gray-900:     #1F2122;
+$black:        #010A10;
+
+$blue:         #0060C0;
+$indigo:       #4A19AC;
+$purple:       #A330C0;
+$violet:       #C7167D;
+$pink:         #E84090;
+$deep-red:     #F62A00;
+$red:          #E03840;
+$orange:       #FF8020;
+$yellow:       #FFC010;
+$green:        #30A040;
+$teal:         #20D0D0;
+$cyan:         #00A0FF;
+$soft-red:     #FF5040;
+$soft-orange:  #ff9800;
+
+$mail-primary: #0072BB;
+$mail-info:    #009FFD;
+$mail-success: #28A745;
+$mail-warning: #FF7F00;
+$mail-danger:  #E0302E;
+$mail-trouble: #6F42C1;
+
+$grays: ();
+$grays: map-merge((
+	000:  $white,
+	100:  $gray-100,
+	200:  $gray-200,
+	300:  $gray-300,
+	400:  $gray-400,
+	500:  $gray-500,
+	600:  $gray-600,
+	700:  $gray-700,
+	800:  $gray-800,
+	900:  $gray-900,
+	1000: $black
+), $grays);
+
+$colors: ();
+$colors: map-merge((
+	blue:        $blue,
+	indigo:      $indigo,
+	purple:      $purple,
+	violet:      $violet,
+	pink:        $pink,
+	red:         $red,
+	orange:      $orange,
+	yellow:      $yellow,
+	green:       $green,
+	teal:        $teal,
+	cyan:        $cyan,
+	white:       $white,
+	black:       $black,
+	gray:        $gray-600,
+	gray-dark:   $gray-800,
+	deep-red:    $deep-red,
+	soft-red:    $soft-red,
+	soft-orange: $soft-orange,
+), $colors);
+
+$theme-colors: ();
+$theme-colors: map-merge((
+	primary:   $blue,
+	secondary: $gray-600,
+	success:   $green,
+	info:      $cyan,
+	warning:   $yellow,
+	danger:    $red,
+	trouble:   $purple,
+	light:     $gray-100,
+	dark:      $gray-800,
+	accent:    $soft-orange
+), $theme-colors);
+
+$mail-colors: ();
+$mail-colors: map-merge((
+	primary:   $mail-primary,
+	secondary: $gray-600,
+	info:      $mail-info,
+	success:   $mail-success,
+	warning:   $mail-warning,
+	danger:    $mail-danger,
+	trouble:   $mail-trouble,
+	light:     $gray-100,
+	dark:      $gray-800
+), $mail-colors);
+
+// Set a specific jump point for requesting color jumps
+$theme-color-interval: 8%;

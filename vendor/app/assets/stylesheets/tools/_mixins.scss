@@ -1,0 +1,60 @@
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+	@return $number;
+}
+@mixin btn-outline($color) {
+	background-color: color(white);
+	background-image: none;
+	border-color: $color;
+	color: $color;
+
+	&:hover, &:focus, &:active {
+		background-color: $color;
+		border-color: $color;
+		color: color(white);
+	}
+}
+@mixin btn($color) {
+	background-color: $color;
+	background-image: none;
+	border-color: $color;
+	color: color(white);
+
+	&:hover, &:focus, &:active {
+		background-color: color(white);
+		border-color: $color;
+		color: $color;
+	}
+}
+@mixin mail-layout($color, $percentage) {
+	background: linear-gradient(to bottom, lighten($color, $percentage) 0, lighten($color, $percentage) $background-bar-height, color(white) $background-bar-height, color(white) 100%);
+
+	.btn {
+		background-color: $color;
+	}
+	hr {
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, transparent, $color, transparent);
+	}
+}
+@mixin vw($size) {
+	$max-breakpoint: map-get($grid-breakpoints, md);
+	$size-in-px: strip-unit($size) * $font-size;
+	font-size: $size-in-px / $max-breakpoint * 100vw * 2;
+
+	// Prevent font-size from getting too big
+	// .5 == 2^-1
+	@media (min-width:$max-breakpoint * .5) {
+		font-size: $size;
+	}
+}
+@function theme-color-lighten($color-name:"primary", $lighten:0%) {
+	$color: theme-color($color-name);
+	@return lighten($color, $lighten)
+}
+@function mail-color($key:"primary") {
+	@return map-get($mail-colors, $key);
+}

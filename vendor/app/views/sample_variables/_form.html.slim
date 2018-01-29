@@ -1,0 +1,10 @@
+= simple_form_for(@sample_variable) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :value
+    = f.association :sample
+    = f.association :variable
+
+  .form-actions
+    = f.button :submit

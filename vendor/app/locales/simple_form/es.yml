@@ -1,0 +1,14 @@
+es:
+  simple_form:
+    'yes': Sí
+    'no': "No"
+    required:
+      html: <abbr title="requerido"><small><i class="fa fa-info-circle text-info"></i></small></abbr>
+    error_notification:
+       default_message: 'Por favor revise los siguientes problemas:'
+    hints:
+      professor:
+        edit:
+          avatar_url: Url link a imagen que desees usar como avatar
+          password: Deja en blanco si no deseas cambiarla
+          current_password: Necesitamos tu contraseña actual para confirmar los cambios

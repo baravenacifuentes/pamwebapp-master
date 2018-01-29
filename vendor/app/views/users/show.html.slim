@@ -1,0 +1,13 @@
+= header_generator @user, 'user'
+.description-box-inverse
+	dl.row-wg
+		dt.col-sm-3 = User.human_attribute_name(:id)
+		dd.col-sm-9 = @user.id
+		dt.col-sm-3 = User.human_attribute_name(:name)
+		dd.col-sm-9 = @user.name
+		dt.col-sm-3 = User.human_attribute_name(:surname)
+		dd.col-sm-9 = @user.surname
+		dt.col-sm-3 = User.human_attribute_name(:second_surname)
+		dd.col-sm-9 = @user.second_surname
+		dt.col-sm-3 = User.human_attribute_name(:email)
+		dd.col-sm-9 = @user.email

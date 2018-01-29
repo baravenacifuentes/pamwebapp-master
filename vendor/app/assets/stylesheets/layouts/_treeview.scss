@@ -1,0 +1,41 @@
+.list-group {
+	display: block;
+	color: theme-color(primary);
+
+	&:first-child {
+		border-bottom: 1px solid theme-color(secondary);
+	}
+	.list-group {
+		&.collapse {
+			display: none;
+
+			&.show {
+				display: block;
+			}
+		}
+	}
+	.list-group-item {
+		display: block;
+		border-color: theme-color(secondary);
+		border-radius: 0;
+
+		&:last-child {
+			border-bottom: none;
+		}
+		&.collapsed {
+			.fa-square {
+				@extend .fa-plus-square;
+			}
+		}
+		.fa-square {
+			@extend .fa-minus-square;
+		}
+	}
+	span.indent {
+		padding: 0 .75rem;
+	}
+	.fa-fw {
+		width: 1.5rem;
+		margin-right: .5rem;
+	}
+}

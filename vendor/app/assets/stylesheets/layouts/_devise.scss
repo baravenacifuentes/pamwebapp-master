@@ -1,0 +1,24 @@
+.devise-form-container {
+	@include make-row();
+	justify-content: center;
+
+	.devise-form {
+		width: 60rem;
+		margin: 1rem;
+	}
+}
+.edit-form {
+	.avatar {
+		padding: 0 2rem;
+
+		@include media-breakpoint-down(md) {
+			padding: 2rem;
+		}
+		img {
+			display: block;
+			margin: auto;
+			width: 100%;
+			max-width: 20rem;
+		}
+	}
+}

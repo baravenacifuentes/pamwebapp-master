@@ -1,0 +1,10 @@
+.row-wg.justify-content-center
+	.col-md-8
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = @gear_type.singularize
+			.card-body
+				= simple_form_for @gear_type do |f|
+					- f.error_notification
+					= f.input :name
+					= f.button :submit

@@ -1,0 +1,16 @@
+.row-wg {
+	margin: 0 1rem;
+	@extend .row;
+}
+.visible-desktop {
+	display: none;
+	@extend .d-md-inline-block;
+}
+.visible-mobile {
+	@extend .d-md-none;
+}
+.pull-right-sm-up {
+	@include media-breakpoint-up(sm) {
+		float: right;
+	}
+}
