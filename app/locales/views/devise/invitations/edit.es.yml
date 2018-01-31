@@ -1,0 +1,10 @@
+es:
+  devise:
+    invitations:
+      edit:
+        title: Bienvenido
+        heading: Bienvenido a APP_NAME_PLAIN
+        card_heading: Iniciar Sesión
+        labels:
+          password: Nueva contraseña
+        submit: Iniciar Sesión

@@ -1,0 +1,6 @@
+es:
+  devise:
+    passwords:
+      new:
+        title: ¿Olvidaste tu contraseña?
+        submit: Enviar instrucciones

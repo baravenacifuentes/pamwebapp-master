@@ -4,7 +4,7 @@ class CreateComponents < ActiveRecord::Migration[5.0]
 			t.string :name
 			t.references :gear, foreign_key: true
 			t.integer :worst_sample_id
-			t.datetime :worst_deadline
+			t.integer :worst_sample_deadline_id
 
 			t.timestamps
 		end

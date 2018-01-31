@@ -1,0 +1,11 @@
+es:
+  devise:
+    passwords:
+      edit:
+        title: Cambiar tu contraseña
+        labels:
+          password: Nueva contraseña
+          password_confirmation: Confirmar nueva contraseña
+        hints:
+          password: "%{length} caracteres como mínimo"
+        submit: Cambiar mi contraseña

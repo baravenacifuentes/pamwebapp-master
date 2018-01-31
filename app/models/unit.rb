@@ -2,6 +2,7 @@ class Unit < ApplicationRecord
 	belongs_to :component
 	belongs_to :lubricant
 	belongs_to :worst_sample, optional: true, class_name: 'Sample'
+	belongs_to :worst_sample_deadline, optional: true, class_name: 'Sample'
 	has_many :samples
 
 	validates_presence_of :name
@@ -11,7 +12,7 @@ class Unit < ApplicationRecord
 	end
 
 	def update_worst_sample(sample)
-		self.update_attributes worst_sample: sample
+		self.update_attributes worst_sample: sample, worst_sample_deadline: sample
 		component.update_worst_sample
 	end
 

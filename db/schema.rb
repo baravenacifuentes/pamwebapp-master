@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.string   "name"
     t.integer  "gear_id"
     t.integer  "worst_sample_id"
-    t.datetime "worst_deadline"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "worst_sample_deadline_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["gear_id"], name: "index_components_on_gear_id"
   end
 
@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.integer  "type_id"
     t.string   "name"
     t.integer  "worst_sample_id"
-    t.datetime "worst_deadline"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "worst_sample_deadline_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["type_id"], name: "index_gears_on_type_id"
   end
 
@@ -68,8 +68,9 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.date     "received_at"
     t.date     "reported_at"
     t.integer  "state",       default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.boolean  "old",         default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["unit_id"], name: "index_samples_on_unit_id"
   end
 
@@ -77,9 +78,9 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.string   "type"
     t.string   "name"
     t.integer  "worst_sample_id"
-    t.datetime "worst_deadline"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "worst_sample_deadline_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "units", force: :cascade do |t|
@@ -87,8 +88,9 @@ ActiveRecord::Schema.define(version: 20171107153117) do
     t.integer  "lubricant_id"
     t.string   "name"
     t.integer  "worst_sample_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "worst_sample_deadline_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["component_id"], name: "index_units_on_component_id"
     t.index ["lubricant_id"], name: "index_units_on_lubricant_id"
   end

@@ -8,6 +8,7 @@ class CreateSamples < ActiveRecord::Migration[5.0]
 			t.date :received_at
 			t.date :reported_at
 			t.integer :state, default: 0
+			t.boolean :old, default: false
 
 			t.timestamps
 		end

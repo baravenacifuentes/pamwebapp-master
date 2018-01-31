@@ -1,0 +1,10 @@
+es:
+  devise:
+    mailer:
+      email_changed:
+        subject: Tu correo electrónico ha sido cambiado con éxito
+        greetings: ¡Hola %{name}!
+        instruction: Tu correo electrónico %{email} ha sido cambiado con éxito.
+        action: Ir a APP_NAME_PLAIN
+        regards: <p>Atentamente</p><p class="team-name">El equipo de APP_NAME_PLAIN</p>
+        regards_plain: Atentamente El equipo de APP_NAME_PLAIN

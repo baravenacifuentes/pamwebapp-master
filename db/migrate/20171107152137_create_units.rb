@@ -5,6 +5,7 @@ class CreateUnits < ActiveRecord::Migration[5.0]
 			t.references :lubricant, foreign_key: true
 			t.string :name
 			t.integer :worst_sample_id
+			t.integer :worst_sample_deadline_id
 
 			t.timestamps
 		end

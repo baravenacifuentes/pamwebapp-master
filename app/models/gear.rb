@@ -1,6 +1,7 @@
 class Gear < ApplicationRecord
 	belongs_to :type, class_name: 'GearType'
 	belongs_to :worst_sample, optional: true, class_name: 'Sample'
+	belongs_to :worst_sample_deadline, optional: true, class_name: 'Sample'
 	has_many :components
 
 	alias_attribute :children, :components
@@ -11,8 +12,8 @@ class Gear < ApplicationRecord
 	def update_worst_sample
 		components.each do |component|
 			if component.worst_sample.present?
-				self.worst_sample = component.worst_sample if self.worst_sample.nil? or self.worst_sample.state < component.worst_sample.state
-				self.worst_deadline = component.worst_deadline if self.worst_deadline.nil? or self.worst_deadline > component.worst_deadline
+				self.worst_sample = component.worst_sample if self.worst_sample.nil? or self.worst_sample.state < component.worst_sample.state or self.worst_sample.old?
+				self.worst_sample_deadline = component.worst_sample_deadline if self.worst_sample_deadline.nil? or self.worst_sample_deadline.deadline > component.worst_sample_deadline.deadline or self.worst_sample_deadline.old?
 			end
 		end
 		self.save
@@ -20,16 +21,14 @@ class Gear < ApplicationRecord
 	end
 
 	def worst_deadline_to_icon
-		if worst_deadline.present?
-			if worst_deadline < Time.now
+		if worst_sample_deadline.present?
+			if worst_sample_deadline.deadline < Time.now
 				'<i class="fa fa-fw fa-clock-o text-danger"></i>'.html_safe
-			elsif worst_deadline - 10.days < Time.now
+			elsif worst_sample_deadline.deadline - 10.days < Time.now
 				'<i class="fa fa-fw fa-clock-o text-warning"></i>'.html_safe
 			else
 				'<i class="fa fa-fw fa-clock-o text-success"></i>'.html_safe
 			end
-		else
-			'<i class="fa fa-fw fa-clock-o text-success"></i>'.html_safe
 		end
 	end
 

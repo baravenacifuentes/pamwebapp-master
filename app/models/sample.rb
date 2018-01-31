@@ -16,6 +16,8 @@ class Sample < ApplicationRecord
 
 	after_save :update_parents
 
+	before_create :update_worst_samples
+
 	validates_presence_of :sample_code, :lab_code, :taked_at, :received_at, :reported_at
 
 	validates_uniqueness_of :sample_code
@@ -28,6 +30,11 @@ class Sample < ApplicationRecord
 			self.state = sample_variable.state if self.state < sample_variable.state
 			break if self.state == 4
 		end
+	end
+
+	def update_worst_samples
+		unit.worst_sample.update_attributes old: true if unit.worst_sample.present?
+		unit.worst_sample_deadline.update_attributes old: true if unit.worst_sample_deadline.present?
 	end
 
 	def update_parents

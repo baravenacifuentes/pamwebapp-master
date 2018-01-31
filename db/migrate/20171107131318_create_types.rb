@@ -4,7 +4,7 @@ class CreateTypes < ActiveRecord::Migration[5.0]
 			t.string :type
 			t.string :name
 			t.integer :worst_sample_id
-			t.datetime :worst_deadline
+			t.integer :worst_sample_deadline_id
 
 			t.timestamps
 		end

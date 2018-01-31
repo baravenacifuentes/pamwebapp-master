@@ -1,8 +1,7 @@
 nav.navbar.navbar-dark.navbar-expand-lg
 	= link_to root_url, class: 'navbar-brand'
 		= image_tag 'brand-logo.png'
-		span.app-name
-			= t 'globals.app_name'
+		= t 'globals.app_name'
 	- unless controller_name == 'sessions'
 		button.navbar-toggler data-toggle='collapse' data-target='#navbar-collapse'
 			= icon 'bars'

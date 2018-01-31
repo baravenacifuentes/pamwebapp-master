@@ -1,0 +1,13 @@
+- title
+.devise-form-container
+	.devise-form
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = t '.title'
+			.card-body
+				= simple_form_for resource, as: resource_name, url: unlock_path(resource_name) do |f|
+					- f.error_notification message: f.full_error(:unlock_token)
+					= f.input :email
+					= f.button :submit, t('.submit')
+			.card-footer
+				= render 'devise/shared/links'

@@ -1,0 +1,9 @@
+es:
+  devise:
+    registrations:
+      edit:
+        heading: Editar mi Cuenta
+        hints:
+          password: Deja en blanco si no deseas cambiarla
+          current_password: Necesitamos tu contraseña actual para confirmar los cambios
+        submit: Actualizar

@@ -1,0 +1,12 @@
+es:
+  devise:
+    mailer:
+      invitation_instructions:
+        subject: Has recibido una invitación para formar parte de PamWebApp
+        greetings: ¡Hola %{name}!
+        instruction: Has recibido una invitación para formar parte de APP_NAME_PLAIN por parte de %{invited_by}.
+        instruction_2: Esta invitación será válida hasta el día %{due_date}
+        instruction_3: "Sigue el siguiente link para completar tu registro:"
+        action: Aceptar Invitación
+        regards: <p>Atentamente</p><p class="team-name">El equipo de APP_NAME_PLAIN</p>
+        regards_plain: Atentamente El equipo de APP_NAME_PLAIN

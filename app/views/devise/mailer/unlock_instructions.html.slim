@@ -1,0 +1,24 @@
+.mail-container.danger
+	.upper-container
+		.container
+			.section.logo
+				= image_tag 'brand-logo.png'
+				= t 'globals.app_name'
+			hr
+
+			.section
+				h3 = t '.greetings', name: @resource.short_name
+
+				p = t '.instruction'
+
+				p = t '.instruction_2'
+
+				.action
+					= link_to unlock_url(@resource, unlock_token: @token), class: 'btn', target: '_blank'
+						= t '.action'
+			.section-sm.link-text
+				= link_to nil, unlock_url(@resource, unlock_token: @token), target: '_blank'
+			hr
+
+			.section-sm.regards
+				= t '.regards'

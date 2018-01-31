@@ -1,3 +1,4 @@
 es:
   globals:
-    app_name: PamWebApp
+    app_name: <span class="app-name">PamWebApp</span>
+    app_name_plain: PamWebApp

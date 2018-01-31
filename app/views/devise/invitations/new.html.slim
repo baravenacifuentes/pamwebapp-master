@@ -1,0 +1,14 @@
+- title
+.devise-form-container
+	.devise-form
+		.card.border-primary
+			.card-header.bg-primary
+				h2.text-white = t '.title'
+			.card-body
+				= simple_form_for resource, as: resource_name, url: invitation_path(resource_name) do |f|
+					- f.error_notification
+					= f.input :email
+					= f.input :name
+					= f.input :surname
+					= f.input :second_surname
+					= f.button :submit, t('.submit')
